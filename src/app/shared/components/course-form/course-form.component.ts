@@ -22,8 +22,8 @@ export class CourseFormComponent implements OnInit {
       title: ['', Validators.required],
       description: ['', Validators.required],
       author: ['', Validators.required],
-      authors: [[], Validators.required],  // Масив для списку авторів
-      duration: ['', [Validators.required, Validators.pattern(/^\d+$/)]]  // Перевірка на цифри
+      authors: [[], Validators.required],  
+      duration: ['', [Validators.required, Validators.pattern(/^\d+$/)]]  
     });
 }
 get title() {
