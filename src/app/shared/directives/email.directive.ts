@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, forwardRef } from '@angular/core';
 import { NG_VALIDATORS, Validator, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Directive({
@@ -6,7 +6,7 @@ import { NG_VALIDATORS, Validator, AbstractControl, ValidationErrors } from '@an
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: EmailValidatorDirective,
+      useExisting: forwardRef(() => EmailValidatorDirective),
       multi: true
     }
   ]
