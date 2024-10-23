@@ -1,19 +1,28 @@
 <h2 class="text-align-center">Login</h2>
 <div class="app-plate">
-  <form #loginForm="ngForm">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" >
     <div class="login-form">
       <div>
         <div class="form__control">
           <label for="email">Email</label>
           <!--Use the name `email` for the form control.-->
-          <input type="text" id="email" placeholder="Input text"/>
-          <span id="emailErrorMessage" class="text-danger">Email is required.</span>
-        </div>
+          <input type="text" id="email" name="email" placeholder="Input text"
+          [(ngModel)]="email" #emailInput="ngModel" emailValidator required/>
+          <span id="emailErrorMessage" class="text-danger" 
+      *ngIf="emailInput.invalid && (emailInput.touched || loginForm.submitted)">
+  <span *ngIf="emailInput.errors?.required">Email is required.</span>
+  <span *ngIf="emailInput.errors?.invalidEmail">Invalid email format.</span>
+</span>
+
         <div class="form__control">
           <label for="password">Password</label>
           <!--Use the name `password` for the form control.-->
-          <input type="password" id="password" placeholder="Input text"/>
-          <span id="passwordErrorMessage" class="text-danger">Password is required.</span>
+          <input type="password" id="password" name="password" placeholder="Input text"
+          [(ngModel)]="password" #passwordInput="ngModel" required />
+          <span id="passwordErrorMessage" class="text-danger"
+                *ngIf="passwordInput.invalid && (passwordInput.touched || loginForm.submitted)">
+            Password is required.
+          </span>
         </div>
       </div>
       <div>
