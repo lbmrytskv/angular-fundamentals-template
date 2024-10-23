@@ -12,6 +12,8 @@ import { CoursesModule } from './features/courses/courses.module';
 import { CoursesListModule } from './features/courses/courses-list/courses-list.module';
 import { CourseInfoModule } from './features/course-info/course-info.module';
 
+
+
 @NgModule({
   declarations: [AppComponent, CourseInfoComponent],
   imports: [
@@ -21,6 +23,8 @@ import { CourseInfoModule } from './features/course-info/course-info.module';
     CoursesModule,
     CoursesListModule,
     CourseInfoModule,
+    
+    
   ],
   providers: [AuthorizedGuard, NotAuthorizedGuard, CoursesService, CoursesStoreService],
   bootstrap: [AppComponent],
