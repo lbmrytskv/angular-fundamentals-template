@@ -39,6 +39,7 @@ const components = [
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    EmailValidatorDirective,
   ],
   exports: [components]
 })
