@@ -1,6 +1,6 @@
 <h2 class="text-align-center">Login</h2>
 <div class="app-plate">
-  <form [ngForm]="loginForm" (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <div class="form__control">
       <label for="email">Email</label>
       <input
@@ -13,10 +13,10 @@
         placeholder="Input text"
         required
       />
-      <span *ngIf="emailInput.errors?.required && (emailInput.touched || loginForm.submitted)" class="text-danger">
+      <span *ngIf="emailInput.errors?.['required'] && (emailInput.touched || loginForm.submitted)" class="text-danger">
         Email is required.
       </span>
-      <span *ngIf="emailInput.errors?.invalidEmail && (emailInput.touched || loginForm.submitted)" class="text-danger">
+      <span *ngIf="emailInput.errors?.['invalidEmail'] && (emailInput.touched || loginForm.submitted)" class="text-danger">>
         Invalid email format.
       </span>
     </div>
@@ -33,10 +33,10 @@
         required
         minlength="6"
       />
-      <span *ngIf="passwordInput.errors?.required && (passwordInput.touched || loginForm.submitted)" class="text-danger">
+      <span *ngIf="passwordInput.errors?.['required'] && (passwordInput.touched || loginForm.submitted)" class="text-danger">
         Password is required.
       </span>
-      <span *ngIf="passwordInput.errors?.minlength && (passwordInput.touched || loginForm.submitted)" class="text-danger">
+      <span *ngIf="passwordInput.errors?.['minlength'] && (passwordInput.touched || loginForm.submitted)" class="text-danger">
         Password must be at least 6 characters long.
       </span>
     </div>
