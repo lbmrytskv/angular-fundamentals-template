@@ -33,7 +33,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [...components],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -43,6 +43,6 @@ const components = [
     
     
   ],
-  exports: [components]
+  exports: [...components]
 })
 export class SharedModule { }
