@@ -1,24 +1,21 @@
 import { Directive } from "@angular/core";
 
 @Directive({
-    selector: '[emailValidator]',
-    providers: [{
+    selector: '[emailValidatorDirective]',
+    providers: [
+      {
         provide: NG_VALIDATORS,
         useExisting: EmailValidatorDirective,
-        multi: true,
-      },
-    ],
-})
-export class EmailValidatorDirective implements Validator {
-    // Add your code here
-    validate(control: any): any {
-        const emailValue = control.value;
-        if (emailValue && !emailValue.includes('@')) {
-            return { 'email': true };
-        }
-        return null;
+        multi: true
+      }
+    ]
+  })
+  export class EmailValidatorDirective implements Validator {
+    validate(control: AbstractControl): ValidationErrors | null {
+      const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+      const valid = emailRegex.test(control.value);
+      return valid ? null : { invalidEmail: true };
     }
-    
-}
+  }
 
 
